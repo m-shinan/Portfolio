@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammed Shinan O - Portfolio</title>
+    <style>
+        :root {
+            --primary-color: #61dafb;
+            --secondary-color: #282c34;
+            --text-color: #f0f0f0;
+            --bg-color: #1a1a1a;
+            --card-bg: #2a2a2a;
+            --hover-color: #4fa8d5;
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            transition: background-color 0.3s ease;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        header {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            padding: 2rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(97,218,251,0.1) 0%, rgba(97,218,251,0) 70%);
+            animation: ripple 15s infinite linear;
+            z-index: 1;
+        }
+        @keyframes ripple {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        header h1, header p {
+            position: relative;
+            z-index: 2;
+        }
+        header h1 {
+            margin-bottom: 0.5rem;
+            font-size: 2.5rem;
+        }
+        header p {
+            animation: fadeInUp 1s ease-out 0.5s backwards;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        nav {
+            background-color: rgba(40, 44, 52, 0.8);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style-type: none;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 50%;
+            background-color: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+        nav ul li a:hover::after {
+            width: 100%;
+            left: 0;
+        }
+        section {
+            padding: 3rem 0;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+        h2::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+        h2:hover::after {
+            width: 100%;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -100%;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(97,218,251,0.3) 0%, rgba(97,218,251,0) 50%);
+            transition: all 0.6s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(97,218,251,0.2);
+        }
+        .card:hover::before {
+            top: 100%;
+            left: 100%;
+        }
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: all 0.6s ease;
+        }
+        .btn:hover {
+            background-color: var(--hover-color);
+            transform: translateY(-2px);
+            box-shadow: 0 2px 5px rgba(97,218,251,0.3);
+        }
+        .btn:hover::before {
+            left: 100%;
+        }
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            nav ul li {
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Muhammed Shinan O</h1>
+            <p>GoLang Developer</p>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section id="about">
+            <h2>About Me</h2>
+            <p>I am a motivated GoLang developer with a strong foundation in backend development, eager to apply my skills to real-world projects. As a recent graduate, I am enthusiastic about learning and contributing to innovative teams, while continuously growing my expertise in building scalable and efficient web applications.</p>
+        </section>
+
+        <section id="experience">
+            <h2>Experience</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Go Developer</h3>
+                    <p>MakBig Learn, Kannur, Kerala</p>
+                    <p>December 2023 – Present</p>
+                    <ul>
+                        <li>Developed an Admin panel for user management using Go, Gin, JWT, and PostgreSQL.</li>
+                        <li>Developed an E-Commerce back-end web application using Go, Gin, PostgreSQL.</li>
+                        <li>Gained problem-solving skills and leadership qualities.</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Freelance Backend Developer</h3>
+                    <p>Current Project</p>
+                    <ul>
+                        <li>Developing a boat service booking app using Go, Gin, Hasura, and Docker.</li>
+                        <li>Implementing backend logic for booking management and user authentication.</li>
+                        <li>Integrating with Hasura for efficient data handling and real-time capabilities.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>Projects</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>E-Commerce Web Application</h3>
+                    <p>June 2024 – August 2024</p>
+                    <ul>
+                        <li>Developed using Go, Gin, JWT, PostgreSQL, RazorPay, and Bootstrap.</li>
+                        <li>Implemented comprehensive features for both Admin and User roles.</li>
+                        <li>Includes user management, product management, order management, and more.</li>
+                    </ul>
+                    <a href="#" class="btn">View on GitHub</a>
+                </div>
+                <div class="card">
+                    <h3>User Management System</h3>
+                    <p>April 2024</p>
+                    <ul>
+                        <li>Developed using Go, Gin, PostgreSQL, Cookie Session, and Bootstrap.</li>
+                        <li>Implemented user functionalities including Signup, Login, and home page.</li>
+                        <li>Admin features include User Management with Cookie Session authentication.</li>
+                    </ul>
+                    <a href="#" class="btn">View on GitHub</a>
+                </div>
+                <div class="card">
+                    <h3>Itinerary Planning</h3>
+                    <p>2022 – 2023 (Final Year Degree Project)</p>
+                    <ul>
+                        <li>Developed using Python, Flask, MySQL, HTML, CSS, Android Studio, and Java.</li>
+                        <li>Created a solo trip planning service with web and Android apps.</li>
+                        <li>Implemented shortest path algorithm and GPS tracking features.</li>
+                    </ul>
+                    <a href="#" class="btn">View on Google Drive</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2>Skills</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Languages</h3>
+                    <ul>
+                        <li>Go</li>
+                        <li>SQL (Postgres)</li>
+                        <li>JavaScript (Basic)</li>
+                        <li>HTML</li>
+                        <li>CSS</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Frameworks & Tools</h3>
+                    <ul>
+                        <li>Gin</li>
+                        <li>Bootstrap</li>
+                        <li>Docker</li>
+                        <li>Postman</li>
+                        <li>Git & GitHub</li>
+                        <li>VS Code</li>
+                        <li>pgAdmin</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Databases & Systems</h3>
+                    <ul>
+                        <li>PostgreSQL</li>
+                        <li>Hasura</li>
+                        <li>Linux</li>
+                        <li>Windows</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Soft Skills</h3>
+                    <ul>
+                        <li>Problem Solving</li>
+                        <li>Communication</li>
+                        <li>Leadership</li>
+                        <li>Critical Thinking</li>
+                        <li>Continuous Learning</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="education">
+            <h2>Education</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Bachelor of Computer Applications</h3>
+                    <p>Calicut University, Vatakara, Kerala</p>
+                    <p>2020 – 2023</p>
+                </div>
+                <div class="card">
+                    <h3>Higher Secondary Education (Biology Science)</h3>
+                    <p>MMHSS, New Mahe, Kerala</p>
+                    <p>2018 – 2020</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Contact</h2>
+            <div class="card">
+                <p>Email: mshinan2002@gmail.com</p>
+                <p>Phone: +91 9539505645</p>
+                <p>LinkedIn: <a href="https://www.linkedin.com/in/your-profile" class="btn">LinkedIn Profile</a></p>
+                <p>GitHub: <a href="https://github.com/your-username" class="btn">GitHub Profile</a></p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Intersection Observer for section animations
+        const sections = document.querySelectorAll('section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
