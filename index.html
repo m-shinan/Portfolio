@@ -91,6 +91,14 @@
         z-index: 1000;
         backdrop-filter: blur(10px);
       }
+.menu-toggle {
+  display: none;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: var(--text-color);
+  cursor: pointer;
+}
       nav ul {
         display: flex;
         justify-content: center;
@@ -123,6 +131,33 @@
         width: 100%;
         left: 0;
       }
+
+/* Mobile view */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(40, 44, 52, 0.95);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    width: 100%;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  nav ul li {
+    margin: 1rem 0;
+  }
+}
       section {
         padding: 3rem 0;
         opacity: 0;
@@ -251,17 +286,18 @@
     </header>
 
     <nav>
-      <div class="container">
-        <ul>
-          <li><a href="#about">About</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#education">Education</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </div>
-    </nav>
+  <div class="container">
+    <button class="menu-toggle" aria-label="Toggle Menu">&#9776;</button>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
 
     <main class="container">
       <section id="about">
@@ -506,6 +542,12 @@
           });
         });
       });
+
+  // Toggle mobile nav
+  document.querySelector(".menu-toggle").addEventListener("click", () => {
+    document.querySelector(".nav-links").classList.toggle("show");
+  });
+
     </script>
   </body>
 </html>
