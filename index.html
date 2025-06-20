@@ -548,6 +548,21 @@
     document.querySelector(".nav-links").classList.toggle("show");
   });
 
+// Close mobile menu when any nav link is clicked
+  document.querySelectorAll(".nav-links a").forEach(link => {
+    link.addEventListener("click", () => {
+      document.querySelector(".nav-links").classList.remove("show");
+    });
+  });
+
+  // Close mobile menu on scroll
+  window.addEventListener("scroll", () => {
+    const navMenu = document.querySelector(".nav-links");
+    if (navMenu.classList.contains("show")) {
+      navMenu.classList.remove("show");
+    }
+  });
+
     </script>
   </body>
 </html>
