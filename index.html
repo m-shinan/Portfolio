@@ -378,6 +378,10 @@
                   management, and more.
                 </li>
               </ul>
+<video autoplay muted loop playsinline controls width="100%" style="border-radius: 8px; margin-top: 1rem;">
+              <source src="video/ecommerce.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
             </div>
             <a href="https://github.com/m-shinan/proshop" class="btn"
               >GitHub</a
@@ -401,6 +405,11 @@
                   authentication.
                 </li>
               </ul>
+<!-- Video Demo -->
+            <video autoplay muted loop playsinline controls width="100%" style="border-radius: 8px; margin-top: 1rem;">
+              <source src="video/crud.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
             </div>
             <a
               href="https://github.com/m-shinan/User-management"
@@ -562,6 +571,20 @@
       navMenu.classList.remove("show");
     }
   });
+
+document.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll("video").forEach((video) => {
+        video.addEventListener("click", () => {
+          if (video.requestFullscreen) {
+            video.requestFullscreen();
+          } else if (video.webkitRequestFullscreen) {
+            video.webkitRequestFullscreen(); // Safari
+          } else if (video.msRequestFullscreen) {
+            video.msRequestFullscreen(); // IE11
+          }
+        });
+      });
+    });
 
     </script>
   </body>
